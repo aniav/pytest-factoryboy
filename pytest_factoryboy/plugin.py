@@ -70,7 +70,7 @@ class Request(object):
         """Call _after_postgeneration hooks."""
         for model in list(self.results.keys()):
             results = self.results.pop(model)
-            obj = request.getfuncargvalue(model)
+            obj = request.getfixturevalue(model)
             factory = self.model_factories[model]
             factory._after_postgeneration(obj, create=True, results=results)
 
