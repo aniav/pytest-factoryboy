@@ -104,7 +104,7 @@ def pytest_runtest_call(item):
     except AttributeError:
         # pytest-pep8 plugin passes Pep8Item here during tests.
         return
-    factoryboy_request = request.getfuncargvalue("factoryboy_request")
+    factoryboy_request = request.getfixturevalue("factoryboy_request")
     factoryboy_request.evaluate(request)
     assert not factoryboy_request.deferred
     request.config.hook.pytest_factoryboy_done(request=request)
